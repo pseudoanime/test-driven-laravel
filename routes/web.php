@@ -12,7 +12,3 @@
 */
 
 Route::resource('concerts', 'ConcertController');
-
-Route::get('/', function () {
-    return view('welcome');
-});

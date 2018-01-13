@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Concert;
-use Response;
+use Illuminate\Http\Request;
 
 class ConcertController extends Controller
 {
@@ -45,9 +44,9 @@ class ConcertController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Concert $concert)
     {
-        return Response::make(Concert::findOrFail($id));
+        return view('concerts.show')->with(['concert' => $concert]);
     }
 
     /**
