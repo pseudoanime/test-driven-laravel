@@ -5,10 +5,13 @@ namespace Tests\Unit;
 use App\Concert;
 use Carbon\Carbon;
 use Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ConcertTest extends TestCase
 {
-    /**  test **/
+    use RefreshDatabase;
+
+    /**  @test **/
     public function can_get_formatted_date()
     {
         $concert = factory(Concert::class)->create([
@@ -17,6 +20,6 @@ class ConcertTest extends TestCase
 
         $date = $concert->formatted_date;
 
-        $this->assertEquals('December 13, 2017', $date);
+        $this->assertEquals('January 12, 2017', $date);
     }
 }
