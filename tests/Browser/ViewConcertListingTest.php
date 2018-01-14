@@ -20,7 +20,7 @@ class ViewConcertListingTest extends DuskTestCase
                 ->assertSee($concert->title)
                 ->assertSee($concert->subtitle)
                 ->assertSee($concert->date->format('F j, Y'))
-                // ->assertSee('8:00pm')
+                ->assertSee($concert->date->format('g:ia'))
                 ->assertSee(number_format($concert->ticket_price / 100, 2))
                 ->assertSee($concert->venue)
                 ->assertSee($concert->venue_address)
