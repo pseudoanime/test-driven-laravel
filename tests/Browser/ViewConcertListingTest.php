@@ -28,4 +28,15 @@ class ViewConcertListingTest extends DuskTestCase
                 ->assertSee($concert->additional_information);
         });
     }
+
+    /**  @test **/
+    public function user_cannot_view_unpublished_concerts()
+    {
+        $concert = factory(Concert::class)->create([
+            'published_at' => null
+        ]);;
+
+        $this->get("/concerts/{$concert->id}")
+            ->assertStatus(404);
+    }
 }

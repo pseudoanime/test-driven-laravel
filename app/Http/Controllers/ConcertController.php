@@ -46,7 +46,11 @@ class ConcertController extends Controller
      */
     public function show(Concert $concert)
     {
-        return view('concerts.show')->with(['concert' => $concert]);
+        if (!is_null($concert->published_at)) {
+            return view('concerts.show')->with(['concert' => $concert]);
+        }
+
+        abort(404);
     }
 
     /**

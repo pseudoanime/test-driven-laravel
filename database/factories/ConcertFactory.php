@@ -13,6 +13,7 @@ $factory->define(App\Concert::class, function (Faker $faker) {
         'city'                  => $faker->city,
         'state'                 => $faker->state,
         'zip'                   => $faker->postcode,
-        'additional_information'=> $faker->text
+        'additional_information' => $faker->text,
+        'published_at'          => $faker->dateTimeThisCentury
     ];
 });
