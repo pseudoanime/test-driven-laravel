@@ -46,11 +46,9 @@ class ConcertTest extends TestCase
     /**  @test **/
     public function concerts_with_published_at_fields_are_published()
     {
-        $published_concerts = factory(Concert::class, 2)->create();
+        $published_concerts = factory(Concert::class, 2)->states('published')->create();
 
-        $unpublished_concerts = factory(Concert::class)->create([
-            'published_at' => null
-        ]);
+        $unpublished_concerts = factory(Concert::class)->states('unpublished')->create();
 
         $concerts = Concert::published()->get();
 

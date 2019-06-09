@@ -13,7 +13,7 @@ class ViewConcertListingTest extends DuskTestCase
     /** @test */
     public function user_can_view_a_published_concert_listing()
     {
-        $concert = factory(Concert::class)->create();
+        $concert = factory(Concert::class)->states('published')->create();
 
         $this->browse(function ($browser) use ($concert) {
             $browser->visit('/concerts/' . $concert->id)
@@ -32,9 +32,7 @@ class ViewConcertListingTest extends DuskTestCase
     /**  @test **/
     public function user_cannot_view_unpublished_concerts()
     {
-        $concert = factory(Concert::class)->create([
-            'published_at' => null
-        ]);;
+        $concert = factory(Concert::class)->states("unpublished")->create();
 
         $this->get("/concerts/{$concert->id}")
             ->assertStatus(404);
