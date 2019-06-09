@@ -11,7 +11,7 @@ class ViewConcertListingTest extends DuskTestCase
     use DatabaseMigrations;
 
     /** @test */
-    public function user_can_view_concert_listing()
+    public function user_can_view_a_published_concert_listing()
     {
         $concert = factory(Concert::class)->create();
 
